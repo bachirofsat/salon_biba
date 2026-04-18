@@ -49,7 +49,6 @@
         header h1 { margin: 10px 0 5px; font-size: 2em; color: var(--dark-pink); }
         header p { margin: 0; color: var(--main-pink); font-weight: 700; font-size: 0.9em; }
 
-        /* أيقونات التواصل الاجتماعي العلوية */
         .header-social {
             display: flex; justify-content: center; gap: 15px; margin-top: 15px;
         }
@@ -83,7 +82,6 @@
             display: inline-block; padding-bottom: 5px;
         }
 
-        /* معرض الخدمات المرئي */
         .video-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .video-card {
             background: var(--white); border-radius: 15px; overflow: hidden;
@@ -100,7 +98,6 @@
         .video-info { padding: 15px; text-align: center; }
         .video-info h4 { margin: 0; color: var(--dark-pink); }
 
-        /* نموذج الحجز المطور */
         .booking-section { background-color: var(--white); padding: 25px; border-radius: 15px; border: 1px solid var(--main-pink); box-shadow: 0 5px 20px rgba(176, 42, 101, 0.1); margin-top: 40px; }
         .checkbox-container { max-height: 400px; overflow-y: auto; background-color: var(--soft-pink); border-radius: 8px; padding: 15px; margin: 12px 0; text-align: right; border: 1px solid var(--main-pink); }
         .service-group-title { font-weight: bold; color: var(--dark-pink); display: block; margin-top: 15px; border-bottom: 1px solid var(--main-pink); padding-bottom: 5px; }
@@ -170,7 +167,7 @@
                     <label class="checkbox-label"><input type="checkbox" name="service" value="فستان الحنة"> فستان الحنة</label>
                     <label class="checkbox-label"><input type="checkbox" name="service" value="فستان المناسبات"> فستان المناسبات</label>
 
-                    <span class="service-group-title">💆‍♀️ باقات العرائس:</span>
+                    <span class="service-group-title">👰 باقات العرائس:</span>
                     <label class="checkbox-label"><input type="checkbox" name="service" value="باقة العروسة الملكية"> باقة العروسة (تجهيز كامل)</label>
 
                     <span class="service-group-title">💇‍♀️ خدمات الشعر:</span>
@@ -188,7 +185,9 @@
                 <label style="font-weight: bold; color: var(--dark-pink);">اختاري التوقيت:</label>
                 <input type="datetime-local" id="datetime" required>
                 
-                <button type="button" onclick="sendToWhatsApp()" class="btn">تأكيد الحجز واتساب</button>
+                <button type="button" onclick="sendToWhatsApp()" class="btn">
+                    <i class="fab fa-whatsapp"></i> تأكيد الحجز واتساب
+                </button>
             </form>
         </div>
     </div>
@@ -196,22 +195,13 @@
     <footer>
         <p>Salon Biba - الجلفة، حي البرج</p>
         <p>الهاتف: 06.69.49.82.18</p>
-        <div style="margin-top:15px; display:flex; justify-content:center; gap:20px;">
-            <div onclick="forceExternal('https://m.facebook.com/dabbahlamia')" style="color:white; cursor:pointer; font-size:1.5em;"><i class="fab fa-facebook-f"></i></div>
-            <div onclick="forceExternal('https://m.tiktok.com/@salonbiba')" style="color:white; cursor:pointer; font-size:1.5em;"><i class="fab fa-tiktok"></i></div>
-        </div>
     </footer>
 
     <script>
-        // دالة الفتح الخارجي القسري لتجاوز حظر WebView والفتح في المتصفح الأصلي
         function forceExternal(url) {
             const cleanUrl = url.replace(/^https?:\/\//, "");
             const intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-            
-            // محاولة الفتح بنظام Intent
             window.location.href = intentUrl;
-            
-            // حل احتياطي في حال عدم الاستجابة
             setTimeout(() => {
                 window.open(url, '_blank'); 
             }, 600);
